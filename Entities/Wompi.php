@@ -6,23 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wompi
 {
-    private $urlAction;
-
-    private $publicKey;
-
-    private $currency;
-
-    private $referenceCode;
-
-    private $amount;
-
-    private $redirectUrl;
-
-    private $_htmlFormCode;
-
-    private $_htmlCode;
-
-    private $nameForm;
+    
+    private $urlAction; 
+  	private $publicKey;
+    public $currency;
+  	public $referenceCode;
+  	public $amount;
+  	private $redirectUrl;
+    private $signatureIntegrity;
+  	
+  	private $_htmlFormCode;
+  	private $_htmlCode;
+  	private $nameForm;
 
     public function __construct($url = '', $publicKey = '', $referenceCode = '', $amount = 0, $currency = '', $redirectUrl = '')
     {
@@ -95,7 +90,7 @@ class Wompi
     $this->_htmlFormCode.=$this->_addInput('public-key',$this->publicKey);
     $this->_htmlFormCode.=$this->_addInput('currency',$this->currency);
     $this->_htmlFormCode.=$this->_addInput('amount-in-cents',$this->amount);
-		$this->_htmlFormCode.=$this->_addInput('reference',$this->referenceCode);
+	$this->_htmlFormCode.=$this->_addInput('reference',$this->referenceCode);
     $this->_htmlFormCode.=$this->_addInput('signature:integrity',$this->signatureIntegrity);
     $this->_htmlFormCode.=$this->_addInput('redirect-url',$this->redirectUrl);
 
